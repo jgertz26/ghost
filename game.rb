@@ -1,14 +1,4 @@
-require "pg"
-require "pry"
-
-def db_connection
-  begin
-    connection = PG.connect(dbname: "wordgames")
-    yield(connection)
-  ensure
-    connection.close
-  end
-end
+require_relative "connection"
 
 def find_rand_match(current_letters)
   sql = "SELECT word FROM words
